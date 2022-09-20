@@ -1,0 +1,49 @@
+name: Export DB for Local
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  
+    env:
+      ssh_host: "jillsmultidev.ssh.wpengine.net"
+      ssh_user: "jillsmultidev"
+      export_script: "cd ~/sites/jillsmultidev && wp db export back-for-local.sql"
+      sync_script: "cd .scripts && ./local_export.sh"
+    
+    steps: 
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Export DB for Local
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ env.ssh_host }}
+        username: ${{ env.ssh_user }}
+        port: 22
+        key: ${{ secrets.WPE_SSHG_KEY_PRIVATE }}
+        script: |
+          ${{ env.export_script }}
+
+    - name: Setup SSH
+      uses: shimataro/ssh-key-action@v2
+      with:
+        key: ${{ secrets.WPE_SSHG_KEY_PRIVATE }} 
+        known_hosts: 'placeholder'
+        if_key_exists: replace
+
+    - name: Add Known Hosts
+      run: |
+        ssh-keyscan -H ${{ env.ssh_host }} >> ~/.ssh/known_hosts
+
+    - name: Rsync Plugins & Uploads to Runner
+      run: |
+        ${{ env.sync_script }}
+
+    - name: Get Local Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: local-artifact
+        path: .scripts/local.zip
+        retention-days: 7

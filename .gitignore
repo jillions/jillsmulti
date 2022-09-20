@@ -1,0 +1,34 @@
+# ignore WP core files
+wp-admin/
+wp-includes/
+wp-content/uploads
+wp-content/plugins
+wp-content/mu-plugins
+wp-content/themes/twenty*
+wp-activate.php
+wp-blog-header.php
+wp-comments-post.php
+wp-config*
+wp-cron.php
+wp-links-opml.php
+wp-load.php
+wp-login.php
+wp-mail.php
+wp-settings.php
+wp-signup.php
+wp-trackback.php
+xmlrpc.php
+index.php
+license.txt
+readme.html
+
+# misc
+*~
+.DS_Store
+.svn
+.cvs
+*.bak
+*.swp
+Thumbs.db
+.idea
+.vscode

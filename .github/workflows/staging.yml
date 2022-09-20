@@ -1,0 +1,35 @@
+name: Deploy Staging
+
+on:
+  push:
+    branches:
+      - staging
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  
+    
+    steps: 
+    - uses: actions/checkout@v2
+    - name: Deploy Build Scripts to WP Engine
+      uses: wpengine/github-action-wpe-site-deploy@v3.0
+      with:
+      # Deploy vars 
+        WPE_SSHG_KEY_PRIVATE: ${{ secrets.WPE_SSHG_KEY_PRIVATE }} 
+        WPE_ENV: jillsmultidev
+        # Deploy Options
+        SRC_PATH: ".scripts"
+        FLAGS: -azvr --inplace --delete-after --exclude=".*" --exclude-from=ignorefile.txt
+
+    - name: Deploy Theme to WP Engine
+      uses: wpengine/github-action-wpe-site-deploy@v3.0
+      with:
+      # Deploy vars 
+        WPE_SSHG_KEY_PRIVATE: ${{ secrets.WPE_SSHG_KEY_PRIVATE }} 
+        WPE_ENV: jillsmultidev
+        # Deploy Options
+        SRC_PATH: "wp-content/themes/"
+        REMOTE_PATH: "wp-content/themes/"
+        PHP_LINT: TRUE
+        FLAGS: -azvr --inplace --delete-after --exclude=".*" --exclude-from=ignorefile.txt
+        CACHE_CLEAR: TRUE
