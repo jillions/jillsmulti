@@ -15,8 +15,8 @@ WP_STG_URL="jillsmultistg.wpengine.com"
 
 WP_PRD_SSH="jillsmulti@jillsmulti.ssh.wpengine.net"
 WP_PRD_INSTALL="jillsmulti"
-WP_PRD_URL="wordpress.jillions.nyc"
-WP_PRD_WWW_URL="wordpress.jillions.nyc"
+WP_PRD_URL="multi.jillions.nyc"
+WP_PRD_WWW_URL="multi.jillions.nyc"
 
 #DO NOT CHANGE - DYNAMICALLY SOURCED FROM GITHUB ACTIONS
 pwd="pwd"

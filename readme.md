@@ -10,7 +10,7 @@ Contributors:
 | :------------- | :----------:  |  :----------:  | :----------:  |
 |  develop  | <https://jillsmultidev.wpengine.com/>  |    U: jillsmultidev // P: preview  | ![Deploy Dev](https://github.com/jillions/jillsmulti/actions/workflows/develop.yml/badge.svg) |
 |  staging  | <https://jillsmultistg.wpengine.com/>  |  U: jillsmultistg // P: preview  | ![Deploy Stage](https://github.com/jillions/jillsmulti/actions/workflows/staging.yml/badge.svg) |
-|  production  | <https://wordpress.jillions.nyc/>  |    | ![Deploy Prod](https://github.com/jillions/jillsmulti/actions/workflows/production.yml/badge.svg) |
+|  production  | <https://multi.jillions.nyc/>  |    | ![Deploy Prod](https://github.com/jillions/jillsmulti/actions/workflows/production.yml/badge.svg) |
 
 ## Environments
 ### **LOCAL**
@@ -25,7 +25,7 @@ Contributors:
  
  
 ### **PRODUCTION**
-- <https://wordpress.jillions.nyc/>
+- <https://multi.jillions.nyc/>
 
 
 ## Releases
